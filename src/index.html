@@ -45,7 +45,7 @@
     <div id="cookieConsent" class="coop-c-notification" role="status">
         <h3 class="coop-c-notification__heading">Cookies</h3>
         <p class="coop-c-notification__p">
-            This application uses cookies, please see the Co-op Privacy &amp; Cookie Policies, <a href="https://legal-enquiry-service-qa.cls-dev.digital.coop.co.uk/privacy">Learn More</a>.
+            This application uses cookies, please see the Co-op Privacy &amp; Cookie Policies, <a href="">Learn More</a>.
             <button type="button" class="coop-btn coop-btn--small" aria-label="Close" data-cookie-string=".AspNet.Consent=yes; expires=Thu, 15 Jul 2021 08:56:47 GMT; path=/; secure; samesite=none">
                 <span aria-hidden="true">Accept</span>
             </button>
@@ -61,10 +61,616 @@
             }, false);
         })();
     </script>
+                    <div id="divorceWizardApp" class="coop-l-row">
+                        <div class="coop-l-column coop-l-large-7">
+                            <form id="divorceWizardFormPage1" v-on:submit.prevent v-on:submit="" novalidate>
+                                <template id="step1" v-if="currentStep == 1">
+                                    <h2 id="cause-name">Divorce: see how things will be split</h2>
+                                    <p>
+                                        To get a divorce you must:
+                                        <ul>
+                                            <li>have been married for over 1 year</li>
+                                            <li>have a marriage that’s legally recognised in the UK (including civil partnerships)</li>
+                                            <li>have a permanent home in the UK – this can be the permanent home of your husband or wife</li>
+                                        </ul>
+                                    </p>
+                                    <fieldset>
+                                        <div class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">How long have you been married?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="marriedHowLong" v-model="marriedHowLong" id="marriedHowLong1" value="1" required>
+                                                    <label class="coop-c-form-choice__label" for="marriedHowLong1">Less than 1 year</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="marriedHowLong" v-model="marriedHowLong" id="marriedHowLong2" value="2" required>
+                                                    <label class="coop-c-form-choice__label" for="marriedHowLong2">Between 1 and 5 years</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="marriedHowLong" v-model="marriedHowLong" id="marriedHowLong3" value="3" required>
+                                                    <label class="coop-c-form-choice__label" for="marriedHowLong3">6 years or longer</label>
+                                                </div>
+                                                <error-message :show-errors="step1.formSubmitted" :field="errors.marriedHowLong" />
+                                            </fieldset>
+                                        </div>
 
-<div id="divorceWizardApp" class="coop-l-row"><div class="coop-l-column coop-l-large-7"><form id="divorceWizardFormPage1" novalidate="novalidate"><h2 id="cause-name">Divorce: see how things will be split</h2> <p>
-                    To get a divorce you must:
-                    </p><ul><li>have been married for over 1 year</li> <li>have a marriage that’s legally recognised in the UK (including civil partnerships)</li> <li>have a permanent home in the UK – this can be the permanent home of your husband or wife</li></ul> <p></p> <fieldset><div class="coop-form__row"><fieldset><legend class="coop-c-form-choice__legend">How long have you been married?</legend> <div class="coop-c-form-choice"><input type="radio" name="marriedHowLong" id="marriedHowLong1" value="1" required="required" class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" listener="true"> <label for="marriedHowLong1" class="coop-c-form-choice__label">Less than 1 year</label></div> <div class="coop-c-form-choice"><input type="radio" name="marriedHowLong" id="marriedHowLong2" value="2" required="required" class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" listener="true"> <label for="marriedHowLong2" class="coop-c-form-choice__label">Between 1 and 5 years</label></div> <div class="coop-c-form-choice"><input type="radio" name="marriedHowLong" id="marriedHowLong3" value="3" required="required" class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" listener="true"> <label for="marriedHowLong3" class="coop-c-form-choice__label">6 years or longer</label></div> <!----></fieldset></div> <!----> <!----></fieldset> <div class="coop-form__row"><!----> <button type="button" class="coop-btn coop-btn--primary">Next Step</button></div> <!----></form> <form id="divorceWizardFormPage2" novalidate="novalidate"><!----></form> <form id="divorceWizardFormPage3" novalidate="novalidate"><!----></form> <form id="divorceWizardFormPage4" novalidate="novalidate"><!----></form> <form id="divorceWizardFormPage5" novalidate="novalidate"><!----></form> <form id="divorceWizardFormPage6" novalidate="novalidate"><!----></form> <form id="divorceWizardFormPage7" novalidate="novalidate"><!----></form> <form id="divorceWizardFormPage8" novalidate="novalidate"><!----> <br></form> <a href="https://legal-enquiry-service-qa.cls-dev.digital.coop.co.uk/partners/prudential/family" role="button" class="coop-t-link-black">Return to Hub</a></div></div>
+                                        <div v-if="marriedHowLong != 1 && marriedHowLong != null" class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Do you have a pre or post nuptial agreement?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="postNuptialAgreement" v-model="postNuptialAgreement" id="postNuptialAgreement1" value="yes" required>
+                                                    <label class="coop-c-form-choice__label" for="postNuptialAgreement1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="postNuptialAgreement" v-model="postNuptialAgreement" id="postNuptialAgreement2" value="no" required>
+                                                    <label class="coop-c-form-choice__label" for="postNuptialAgreement2">No</label>
+                                                </div>
+                                                <error-message :show-errors="step1.formSubmitted" :field="errors.postNuptialAgreement" />
+                                            </fieldset>
+                                        </div>
+
+                                        <div v-if="marriedHowLong != 1 && marriedHowLong != null && postNuptialAgreement === 'no'" class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Do you both agree to the divorce?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="agreedDivorce" v-model="agreedDivorce" id="agreedDivorce1" value="yes" required>
+                                                    <label class="coop-c-form-choice__label" for="agreedDivorce1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="agreedDivorce" v-model="agreedDivorce" id="agreedDivorce2" value="no" required>
+                                                    <label class="coop-c-form-choice__label" for="agreedDivorce2">No</label>
+                                                </div>
+                                                <error-message :show-errors="step1.formSubmitted" :field="errors.agreedDivorce" />
+                                            </fieldset>
+                                        </div>
+                                    </fieldset>
+
+                                    <div class="coop-form__row">
+                                        <button type="button" class="coop-btn" v-on:click="goToStep(currentStep - 1)" v-if="currentStep !== 1">Back</button>
+                                        <button type="button" class="coop-btn coop-btn--primary" v-on:click="goToStep2()">Next Step</button>
+                                    </div>
+                                    <div v-if="step1.isEligible === false">
+                                        <div v-if="marriedHowLong == 1" class="coop-c-form-choice__legend">
+                                            <p>
+                                                You need to be married for at least a year to file for divorce.
+                                            </p>
+                                            <p>
+                                                For initial legal advice speak to our Divorce Solicitors
+                                            </p>
+                                        </div>
+                                        <div v-else-if="postNuptialAgreement === 'yes'">
+                                            <p class="coop-c-form-choice__legend">
+                                                For initial legal advice speak to our Divorce Solicitors
+                                            </p>
+                                        </div>
+                                        <div v-else-if="agreedDivorce === 'no'" c>
+                                            <p lass="coop-c-form-choice__legend">
+                                                If one of you does not agree to the divorce it is known as contested,
+
+                                                For initial legal advice speak to our Divorce Solicitors
+                                            </p>
+                                        </div>
+                                    </div>
+                                </template>
+                            </form>
+
+                            <form id="divorceWizardFormPage2" v-on:submit.prevent v-on:submit="" novalidate>
+                                <template id="step2" v-if="currentStep == 2">
+                                    <h2 id="cause-name">Children</h2>
+                                    <fieldset>
+                                        <div class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Do you have any children, step-children or adopted children?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="children" v-model="children" id="children1" value="yes" required>
+                                                    <label class="coop-c-form-choice__label" for="children1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="children" v-model="children" id="children2" value="no" required>
+                                                    <label class="coop-c-form-choice__label" for="children2">No</label>
+                                                </div>
+                                                <error-message :show-errors="step2.formSubmitted" :field="errors.children" />
+                                            </fieldset>
+                                        </div>
+
+                                        <div v-if="children == 'yes'" class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Do any of the children financially depend on you?</legend>
+                                                <div>
+                                                    <p class="coop-label__hint">If they are under 18, answer yes</p>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="childrenDependants" v-model="childrenDependants" id="childrenDependants1" value="yes" required>
+                                                    <label class="coop-c-form-choice__label" for="childrenDependants1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="childrenDependants" v-model="childrenDependants" id="childrenDependants2" value="no" required>
+                                                    <label class="coop-c-form-choice__label" for="childrenDependants2">No</label>
+                                                </div>
+                                                <error-message :show-errors="step2.formSubmitted" :field="errors.childrenDependants" />
+                                            </fieldset>
+                                        </div>
+
+                                        <div v-if="children == 'yes' && childrenDependants == 'yes'" class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Where will the child or children live after the divorce?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="childrenLive" v-model="childrenLive" id="childrenLive1" value="1" required>
+                                                    <label class="coop-c-form-choice__label" for="childrenLive1">With you, or mainly with you</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="childrenLive" v-model="childrenLive" id="childrenLive2" value="2" required>
+                                                    <label class="coop-c-form-choice__label" for="childrenLive2">With your ex, or mainly with your ex</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="childrenLive" v-model="childrenLive" id="childrenLive3" value="3" required>
+                                                    <label class="coop-c-form-choice__label" for="childrenLive3">With each of us equally</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="childrenLive" v-model="childrenLive" id="childrenLive4" value="4" required>
+                                                    <label class="coop-c-form-choice__label" for="childrenLive4">Other</label>
+                                                </div>
+                                                <error-message :show-errors="step2.formSubmitted" :field="errors.childrenLive" />
+                                            </fieldset>
+                                        </div>
+                                    </fieldset>
+
+                                    <div class="coop-form__row">
+                                        <button type="button" class="coop-btn" v-on:click="goToStep(currentStep - 1)" v-if="currentStep !== 1">Back</button>
+                                        <button type="button" class="coop-btn coop-btn--primary" v-on:click="goToStep3()">Next Step</button>
+                                    </div>
+                                </template>
+                            </form>
+
+                            <form id="divorceWizardFormPage3" v-on:submit.prevent v-on:submit="" novalidate>
+                                <template id="step3" v-if="currentStep == 3">
+                                    <h2 id="cause-name">Income</h2>
+                                    <fieldset>
+                                        <div class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Do you work?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="work" v-model="work" id="work1" value="yes" required>
+                                                    <label class="coop-c-form-choice__label" for="work1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="work" v-model="work" id="work2" value="no" required>
+                                                    <label class="coop-c-form-choice__label" for="work2">No</label>
+                                                </div>
+                                                <error-message :show-errors="step3.formSubmitted" :field="errors.work" />
+                                            </fieldset>
+                                        </div>
+
+                                        <div v-if="work === 'no'" class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Is the reason you do not work because of:</legend>
+                                                <div class="coop-c-form-choice" v-if="children === 'yes'">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--checkbox" type="checkbox" v-model="workDoNot" name="workDoNot" id="workDoNotChildren" value="children" v-on:change="setCheckboxSelection('workDoNot','children')">
+                                                    <label class="coop-c-form-choice__label" for="workDoNotChildren">Children</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--checkbox" type="checkbox" v-model="workDoNot" name="workDoNot" id="workDoNotHealth" value="health" v-on:change="setCheckboxSelection('workDoNot', 'health')">
+                                                    <label class="coop-c-form-choice__label" for="workDoNotHealth">Health</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--checkbox" type="checkbox" v-model="workDoNot" name="workDoNot" id="workDoNotRetirement" value="retirement" v-on:change="setCheckboxSelection('workDoNot', 'retirement')">
+                                                    <label class="coop-c-form-choice__label" for="workDoNotRetirement">Retirement</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--checkbox" type="checkbox" v-model="workDoNot" name="workDoNot" id="workDoNotOther" value="other" v-on:change="setCheckboxSelection('workDoNot', 'other')">
+                                                    <label class="coop-c-form-choice__label" for="workDoNotOther">None of these reasons</label>
+                                                </div>
+                                                <error-message :show-errors="step3.formSubmitted" :field="errors.workDoNot" />
+                                            </fieldset>
+                                        </div>
+
+                                        <div v-if="work === 'yes' || (work === 'no' && workDoNot.length > 0)" class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Do you rely on money from your husband or wife to pay for bills, food and upkeep?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="workRely" v-model="workRely" id="workRely1" value="yes" required>
+                                                    <label class="coop-c-form-choice__label" for="workRely1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="workRely" v-model="workRely" id="workRely2" value="no" required>
+                                                    <label class="coop-c-form-choice__label" for="workRely2">No</label>
+                                                </div>
+                                                <error-message :show-errors="step3.formSubmitted" :field="errors.workRely" />
+                                            </fieldset>
+                                        </div>
+                                        <div v-if="workRely == 'no'">
+                                            <div v-if="workRely" class="coop-form__row">
+                                                <fieldset>
+                                                    <legend class="coop-c-form-choice__legend">Does your husband or wife work?</legend>
+                                                    <div class="coop-c-form-choice">
+                                                        <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="workPartner" v-model="workPartner" id="workPartner1" value="yes" required>
+                                                        <label class="coop-c-form-choice__label" for="workPartner1">Yes</label>
+                                                    </div>
+                                                    <div class="coop-c-form-choice">
+                                                        <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="workPartner" v-model="workPartner" id="workPartner2" value="no" required>
+                                                        <label class="coop-c-form-choice__label" for="workPartner2">No</label>
+                                                    </div>
+                                                    <error-message :show-errors="step3.formSubmitted" :field="errors.workPartner" />
+                                                </fieldset>
+                                            </div>
+                                            <div v-if="workPartner == 'no'" class="coop-form__row">
+                                                <fieldset>
+                                                    <legend class="coop-c-form-choice__legend">Is the reason your husband or wife does not work because of:</legend>
+                                                    <div class="coop-c-form-choice" v-if="children === 'yes'">
+                                                        <input class="coop-c-form-choice__input coop-c-form-choice__input--checkbox" type="checkbox" v-model="workPartnerDoNot" name="workPartnerDoNot" id="workPartnerDoNotChildren" value="children" v-on:change="setCheckboxSelection('workPartnerDoNot', 'children')">
+                                                        <label class="coop-c-form-choice__label" for="workPartnerDoNotChildren">Children</label>
+                                                    </div>
+                                                    <div class="coop-c-form-choice">
+                                                        <input class="coop-c-form-choice__input coop-c-form-choice__input--checkbox" type="checkbox" v-model="workPartnerDoNot" name="workPartnerDoNot" id="workPartnerDoNotHealth" value="health" v-on:change="setCheckboxSelection('workPartnerDoNot', 'health')">
+                                                        <label class="coop-c-form-choice__label" for="workPartnerDoNotHealth">Health</label>
+                                                    </div>
+                                                    <div class="coop-c-form-choice">
+                                                        <input class="coop-c-form-choice__input coop-c-form-choice__input--checkbox" type="checkbox" v-model="workPartnerDoNot" name="workPartnerDoNot" id="workPartnerDoNotRetirement" value="retirement" v-on:change="setCheckboxSelection('workPartnerDoNot', 'retirement')">
+                                                        <label class="coop-c-form-choice__label" for="workPartnerDoNotRetirement">Retirement</label>
+                                                    </div>
+                                                    <div class="coop-c-form-choice">
+                                                        <input class="coop-c-form-choice__input coop-c-form-choice__input--checkbox" type="checkbox" v-model="workPartnerDoNot" name="workPartnerDoNot" id="workPartnerDoNotOther" value="other" v-on:change="setCheckboxSelection('workPartnerDoNot', 'other')">
+                                                        <label class="coop-c-form-choice__label" for="workPartnerDoNotOther">None of these reasons</label>
+                                                    </div>
+                                                    <error-message :show-errors="step3.formSubmitted" :field="errors.workPartnerDoNot" />
+                                                </fieldset>
+                                            </div>
+                                            <div v-if="workPartner === 'yes' || (workPartner === 'no' && workPartnerDoNot.length > 0)" class="coop-form__row">
+                                                <fieldset>
+                                                    <legend class="coop-c-form-choice__legend">Does your husband or wife rely on money from you to pay for bills, food and upkeep?</legend>
+                                                    <div class="coop-c-form-choice">
+                                                        <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="workPartnerRely" v-model="workPartnerRely" id="workPartnerRely1" value="yes" required>
+                                                        <label class="coop-c-form-choice__label" for="workPartnerRely1">Yes</label>
+                                                    </div>
+                                                    <div class="coop-c-form-choice">
+                                                        <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="workPartnerRely" v-model="workPartnerRely" id="workPartnerRely2" value="no" required>
+                                                        <label class="coop-c-form-choice__label" for="workPartnerRely2">No</label>
+                                                    </div>
+                                                    <error-message :show-errors="step3.formSubmitted" :field="errors.workPartnerRely" />
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <div class="coop-form__row">
+                                        <button type="button" class="coop-btn" v-on:click="goToStep(currentStep - 1)" v-if="currentStep !== 1">Back</button>
+                                        <button type="button" class="coop-btn coop-btn--primary" v-on:click="goToStep4()">Next Step</button>
+                                    </div>
+                                </template>
+
+                            </form>
+
+                            <form id="divorceWizardFormPage4" v-on:submit.prevent v-on:submit="" novalidate>
+                                <template id="step4" v-if="currentStep == 4">
+                                    <h2 id="cause-name">Housing</h2>
+                                    <fieldset>
+                                        <div class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Do you own, or are paying a mortgage towards, your home?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="home" v-model="home" id="home1" value="yes" v-on:change="setHousingQuestions()" required>
+                                                    <label class="coop-c-form-choice__label" for="home1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="home" v-model="home" id="home2" value="no" v-on:change="setHousingQuestions()" required>
+                                                    <label class="coop-c-form-choice__label" for="home2">No</label>
+                                                </div>
+                                                <error-message :show-errors="step4.formSubmitted" :field="errors.home" />
+                                            </fieldset>
+                                        </div>
+
+                                        <div v-if="home === 'yes'" class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Do you jointly own the home?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="homeJoint" v-model="homeJoint" id="homeJoint1" value="yes" required>
+                                                    <label class="coop-c-form-choice__label" for="homeJoint1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="homeJoint" v-model="homeJoint" id="homeJoint2" value="no" required>
+                                                    <label class="coop-c-form-choice__label" for="homeJoint2">No</label>
+                                                </div>
+                                                <error-message :show-errors="step4.formSubmitted" :field="errors.homeJoint" />
+                                            </fieldset>
+                                        </div>
+
+                                        <div v-if="home === 'no'" class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Does your husband or wife own, or pay a mortgage towards, your home?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="homePartner" v-model="homePartner" id="homePartner1" value="yes" required>
+                                                    <label class="coop-c-form-choice__label" for="homePartner1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="homePartner" v-model="homePartner" id="homePartner2" value="no" required>
+                                                    <label class="coop-c-form-choice__label" for="homePartner2">No</label>
+                                                </div>
+                                                <error-message :show-errors="step4.formSubmitted" :field="errors.homePartner" />
+                                            </fieldset>
+                                        </div>
+
+                                        <div v-if="(home === 'yes' && homeJoint) || homePartner === 'yes'" class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Who will live in the home after the divorce?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="homeContinueLive" v-model="homeContinueLive" id="homeContinueLive1" value="1" required>
+                                                    <label class="coop-c-form-choice__label" for="homeContinueLive1">You will</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="homeContinueLive" v-model="homeContinueLive" id="homeContinueLive2" value="2" required>
+                                                    <label class="coop-c-form-choice__label" for="homeContinueLive2">Your husband or wife will</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="homeContinueLive" v-model="homeContinueLive" id="homeContinueLive3" value="3" required>
+                                                    <label class="coop-c-form-choice__label" for="homeContinueLive3">Neither of you will</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="homeContinueLive" v-model="homeContinueLive" id="homeContinueLive4" value="4" required>
+                                                    <label class="coop-c-form-choice__label" for="homeContinueLive4">Don't know</label>
+                                                </div>
+                                                <error-message :show-errors="step4.formSubmitted" :field="errors.homeContinueLive" />
+                                            </fieldset>
+                                        </div>
+                                    </fieldset>
+
+                                    <div class="coop-form__row">
+                                        <button type="button" class="coop-btn" v-on:click="goToStep(currentStep - 1)" v-if="currentStep !== 1">Back</button>
+                                        <button type="button" class="coop-btn coop-btn--primary" v-on:click="goToStep5()">Next Step</button>
+                                    </div>
+                                </template>
+
+                            </form>
+
+                            <form id="divorceWizardFormPage5" v-on:submit.prevent v-on:submit="" novalidate>
+                                <template id="step5" v-if="currentStep == 5">
+                                    <h2 id="cause-name">Debt</h2>
+                                    <fieldset>
+                                        <div class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Do you have any debt together (other than mortgage)?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="debtJoint" v-model="debtJoint" id="debtJoint1" value="1" required>
+                                                    <label class="coop-c-form-choice__label" for="debtJoint1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="debtJoint" v-model="debtJoint" id="debtJoint2" value="2" required>
+                                                    <label class="coop-c-form-choice__label" for="debtJoint2">No</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="debtJoint" v-model="debtJoint" id="debtJoint3" value="3" required>
+                                                    <label class="coop-c-form-choice__label" for="debtJoint3">Dont Know</label>
+                                                </div>
+                                                <error-message :show-errors="step5.formSubmitted" :field="errors.debtJoint" />
+                                            </fieldset>
+                                        </div>
+
+                                        <div v-if="debtJoint" class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Do you have any debt?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="debtSole" v-model="debtSole" id="debtSole1" value="yes" required>
+                                                    <label class="coop-c-form-choice__label" for="debtSole1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="debtSole" v-model="debtSole" id="debtSole2" value="no" required>
+                                                    <label class="coop-c-form-choice__label" for="debtSole2">No</label>
+                                                </div>
+                                                <error-message :show-errors="step5.formSubmitted" :field="errors.debtSole" />
+                                            </fieldset>
+                                        </div>
+
+                                        <div v-if="debtSole" class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Does your husband or wife have any debt?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="debtPartner" v-model="debtPartner" id="debtPartner1" value="1" required>
+                                                    <label class="coop-c-form-choice__label" for="debtPartner1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="debtPartner" v-model="debtPartner" id="debtPartner2" value="2" required>
+                                                    <label class="coop-c-form-choice__label" for="debtPartner2">No</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="debtPartner" v-model="debtPartner" id="debtPartner3" value="3" required>
+                                                    <label class="coop-c-form-choice__label" for="debtPartner3">Don't know</label>
+                                                </div>
+                                                <error-message :show-errors="step5.formSubmitted" :field="errors.debtPartner" />
+                                            </fieldset>
+                                        </div>
+                                    </fieldset>
+
+                                    <div class="coop-form__row">
+                                        <button type="button" class="coop-btn" v-on:click="goToStep(currentStep - 1)" v-if="currentStep !== 1">Back</button>
+                                        <button type="button" class="coop-btn coop-btn--primary" v-on:click="goToStep6()">Next Step</button>
+                                    </div>
+                                </template>
+
+                            </form>
+
+                            <form id="divorceWizardFormPage6" v-on:submit.prevent v-on:submit="" novalidate>
+                                <template id="step6" v-if="currentStep == 6">
+                                    <h2 id="cause-name">Savings</h2>
+                                    <fieldset>
+                                        <div class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Do you have any joint savings?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="savingsJoint" v-model="savingsJoint" id="savingsJoint1" value="yes" required>
+                                                    <label class="coop-c-form-choice__label" for="savingsJoint1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="savingsJoint" v-model="savingsJoint" id="savingsJoint2" value="no" required>
+                                                    <label class="coop-c-form-choice__label" for="savingsJoint2">No</label>
+                                                </div>
+                                                <error-message :show-errors="step6.formSubmitted" :field="errors.savingsJoint" />
+                                            </fieldset>
+                                        </div>
+
+                                        <div v-if="savingsJoint" class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Do you have any savings?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="savingsSole" v-model="savingsSole" id="savingsSole1" value="yes" required>
+                                                    <label class="coop-c-form-choice__label" for="savingsSole1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="savingsSole" v-model="savingsSole" id="savingsSole2" value="no" required>
+                                                    <label class="coop-c-form-choice__label" for="savingsSole2">No</label>
+                                                </div>
+                                                <error-message :show-errors="step6.formSubmitted" :field="errors.savingsSole" />
+                                            </fieldset>
+                                        </div>
+
+                                        <div v-if="savingsSole" class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Does your husband or wife have any savings?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="savingsPartner" v-model="savingsPartner" id="savingsPartner1" value="1" required>
+                                                    <label class="coop-c-form-choice__label" for="savingsPartner1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="savingsPartner" v-model="savingsPartner" id="savingsPartner2" value="2" required>
+                                                    <label class="coop-c-form-choice__label" for="savingsPartner2">No</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="savingsPartner" v-model="savingsPartner" id="savingsPartner3" value="3" required>
+                                                    <label class="coop-c-form-choice__label" for="savingsPartner3">Don't know</label>
+                                                </div>
+                                                <error-message :show-errors="step6.formSubmitted" :field="errors.savingsPartner" />
+                                            </fieldset>
+                                        </div>
+                                    </fieldset>
+
+                                    <div class="coop-form__row">
+                                        <button type="button" class="coop-btn" v-on:click="goToStep(currentStep - 1)" v-if="currentStep !== 1">Back</button>
+                                        <button type="button" class="coop-btn coop-btn--primary" v-on:click="goToStep7()">Next Step</button>
+                                    </div>
+                                </template>
+
+                            </form>
+
+                            <form id="divorceWizardFormPage7" v-on:submit.prevent v-on:submit="" novalidate>
+                                <template id="step7" v-if="currentStep == 7">
+                                    <h2 id="cause-name">Existing will</h2>
+                                    <fieldset>
+                                        <div class="coop-form__row">
+                                            <fieldset>
+                                                <legend class="coop-c-form-choice__legend">Do you have a will?</legend>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="will" v-model="will" id="will1" value="1" required>
+                                                    <label class="coop-c-form-choice__label" for="will1">Yes</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="will" v-model="will" id="will2" value="2" required>
+                                                    <label class="coop-c-form-choice__label" for="will2">No</label>
+                                                </div>
+                                                <div class="coop-c-form-choice">
+                                                    <input class="coop-c-form-choice__input coop-c-form-choice__input--radio-button" type="radio" name="will" v-model="will" id="will3" value="3" required>
+                                                    <label class="coop-c-form-choice__label" for="will3">Don't know</label>
+                                                </div>
+                                                <error-message :show-errors="step7.formSubmitted" :field="errors.will" />
+                                            </fieldset>
+                                        </div>
+                                    </fieldset>
+
+                                    <div class="coop-form__row">
+                                        <button type="button" class="coop-btn" v-on:click="goToStep(currentStep - 1)" v-if="currentStep !== 1">Back</button>
+                                        <button type="button" class="coop-btn coop-btn--primary" v-on:click="goToStep8()">Check what you’re entitled to</button>
+                                    </div>
+                                </template>
+
+                            </form>
+
+                            <form id="divorceWizardFormPage8" v-on:submit.prevent v-on:submit="" novalidate>
+                                <template id="stepResult" v-if="currentStep == 8">
+                                    <h2>How things might be split</h2>
+                                    <h3>Housing</h3>
+                                    <div v-if="showHousingResult1">
+                                        <p>If your incomes are similar, it’s likely that you’ll both equally split the money from the sale of your property.</p>
+                                        <p>If one of you has a higher income, it’s likely that they’ll get a smaller amount from the sale of your property. This is to make sure that the person who has less, will still have enough money to get by.</p>
+                                    </div>
+                                    <div v-else-if="showHousingResult2">
+                                        <p>If your incomes are similar, it’s likely that you’ll need to buy them out of their half of the property.</p>
+                                        <p>Otherwise you will need to seek advice about your housing needs.</p>
+                                    </div>
+                                    <div v-else-if="showHousingResult3">
+                                        <p>If your incomes are similar, they will need to buy you out of your share of the property.</p>
+                                        <p>Otherwise you will need to seek advice about your housing needs.</p>
+                                    </div>
+                                    <div v-else-if="showHousingResult4">
+                                        <p>If you sell the property, then you will both equally split the money from the sale of your house.</p>
+                                        <p>If one of you decides to live there, then that person will need to buy the other out.</p>
+                                    </div>
+                                    <div v-else-if="showHousingResult5">
+                                        <p>Because you have a child who is under 18 or financially dependent on you, it’s likely that you’ll be able to stay in the home until the child is at least 18.</p>
+                                        <p>If your ex wanted to sell their share of the home before then, they will not be able to.</p>
+                                    </div>
+                                    <div v-else>
+                                        <p>You will need to seek advice about your housing needs.</p>
+                                    </div>
+                                    <div>
+                                        <h3>Income</h3>
+                                        <p v-if="showIncomeResult1">It’s likely that your ex will pay you money to help you with your bills, food and upkeep.</p>
+                                        <p v-else-if="showIncomeResult2">The other person could need to pay you money to help you with your bills, food and upkeep.</p>
+                                        <p v-else-if="showIncomeResult3">It’s likely that you will have to pay money to help your ex with their bills, food and upkeep.</p>
+                                        <p v-else-if="showIncomeResult4">You might need to pay money to help them with their bills, food and upkeep.</p>
+                                        <p v-else-if="showIncomeResult5">Because your ex relies on your income, you may have to continue to pay them after your divorce. This is to make sure they have enough money to get by</p>
+                                        <p v-else>You will need to seek advice about your income.</p>
+                                    </div>
+                                    <div v-if="showChildrenResults">
+                                        <h3>Children</h3>
+                                        <p v-if="showChildrenResult1">The other person will pay you child maintenance (an arrangement between you and the other parent about how your child’s living costs will be paid).</p>
+                                        <p v-else-if="showChildrenResult2">You will have to pay child maintenance (an arrangement between you and the other parent about how your child’s living costs will be paid).</p>
+                                        <p v-else-if="showChildrenResult3">You will need to seek advice about child maintenance (an arrangement between you and the other parent about how your child’s living costs will be paid).</p>
+                                    </div>
+
+                                    <div v-if="showDebtResults">
+                                        <h3>Debt</h3>
+                                        <p v-if="showDebtResult1">You will both have to pay back the debts you had together, equally.</p>
+                                        <p v-if="showDebtResult2">Your ex will not have to pay towards any of the debt you have, unless they benefited from it (for example, a holiday). Otherwise, you will have to pay back the debt without their contribution.</p>
+                                        <p v-if="showDebtResult3">You will not have to pay towards any of their debt, unless you benefited from it (for example, a holiday).</p>
+                                    </div>
+
+                                    <div v-if="showSavingsResults">
+                                        <h3>Savings</h3>
+                                        <p v-if="showSavingsResult1">You will both equally split the savings you had in your joint account.</p>
+                                        <div v-else-if="showSavingsResult2">
+                                            <p>You will both equally split the savings you had in your joint account.</p>
+                                            <p>It’s likely that your ex will not be entitled to any of your personal savings.</p>
+                                        </div>
+                                        <div v-else-if="showSavingsResult3">
+                                            <p>You will both equally split the savings you had in your joint account.</p>
+                                            <p>It’s likely that you will not be entitled to any of your ex's personal savings.</p>
+                                        </div>
+                                        <div v-else-if="showSavingsResult4">
+                                            <p>You will both equally split the savings you had in your joint account.</p>
+                                            <p>It’s likely that you will not be entitled to any of each other's personal savings.</p>
+                                        </div>
+                                        <p v-else-if="showSavingsResult5">It’s likely that your ex will get a bigger share of any savings to pay towards their home.</p>
+                                        <p v-else-if="showSavingsResult6">It’s likely that you will get a bigger share of any savings to pay towards your home.</p>
+                                        <p v-else>You will need to seek advice about how savings will be split.</p>
+                                    </div>
+
+                                    <div v-if="will == 1">
+                                        <h3>Will</h3>
+                                        <p>You need a new will.</p>
+                                    </div>
+
+                                    <p>Our divorce solicitors can give you free advice tailored to your circumstances.</p>
+                                    <br />
+
+                                    <div>
+                                        <button type="button" class="coop-btn" v-on:click="goToStep(currentStep - 1)" v-if="currentStep !== 1">Back</button>
+                                        <a class="coop-btn coop-btn--primary" role="button">Request a callback</a> <br/>
+                                        <br>
+                                    </div>
+                                </template>
+
+                                <br />
+                            </form>
+                          <!--  <a href="@Model.ReturnLink" class="coop-t-link-black" role="button">Return to Hub</a> -->
+                        </div>
+                    </div>
                 </div>
             </article>
         </main>
